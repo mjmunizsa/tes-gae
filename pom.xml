@@ -9,7 +9,7 @@
     <version>1.0</version>
     <packaging>war</packaging>
 
-    <name>test-gae</name>
+    <name>test-gae-223215</name>
 
     <properties>
         <local.port>8080</local.port>
@@ -92,7 +92,7 @@
                                 </apiSource>
                             </apiSources>
                         </configuration>
-                        <!-- <executions>
+                        <executions>
                             <execution>
                                 <id>Generate SWAGGER documentation</id>
                                 <phase>compile</phase>
@@ -100,7 +100,7 @@
                                     <goal>generate</goal>
                                 </goals>
                             </execution>
-                        </executions> -->
+                        </executions>
                     </plugin>
                 </plugins>
             </build>

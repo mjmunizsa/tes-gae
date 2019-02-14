@@ -10,10 +10,33 @@ angular.module('bookstore')
         }
 
         $scope.save = function() {
-        	bookstore.save($scope.form, function() {
-                $scope.load();
-                $scope.form = {};
-            });
+        	$scope.tituloInvalido = false;
+        	$scope.autorInvalido = false;
+        	$scope.generoInvalido = false;
+        	$scope.anioInvalido = false;
+
+        	if (!$scope.form.title.$valid) {
+        		$scope.tituloInvalido = true;
+        	}
+        	if (!$scope.form.author.$valid) {
+        		$scope.autorInvalido = true;
+        	}
+        	
+        	if (!$scope.form.genre.$valid) {
+        		$scope.generoInvalido = true;	
+        	} 
+        	
+        	if (!$scope.form.year.$valid) {
+        		$scope.anioInvalido = true;
+        	} 
+        	
+        	if ($scope.form.$valid) {
+	        	bookstore.save($scope.book, function() {
+	        		$scope.load();
+	        		$scope.book = {};
+	        	});
+        	}
+        	
         }
         
         $scope.search = function() {

@@ -1,41 +1,54 @@
-<h3>Search Book</h3>
+<h3>Búsqueda libros</h3>
  <input id="search" ng-model="strsearch"/>
- <button ng-click="search()">Search</button>
-<h3>List of books</h3>
+ <button ng-click="search()">Buscar</button>
+<h3>Lista de libros</h3>
 <table>
   <tr>
-    <th>Title</th>
-    <th>Author</th>
+    <th>Título</th>
+    <th>Autor</th>
     <th></th>
   </tr>
   <tr ng-repeat="item in list">
     <td><a href="/#/{{item.id}}">{{item.title}}</a></td>
     <td>{{item.author}}</td>
-    <td><button ng-click="delete(item.id)">Delete</button></td>
+    <td><button ng-click="delete(item.id)">Eliminar</button></td>
   </tr>
 </table>
 
-<h3>New Book</h3>
+<h3>Nuevo Libro</h3>
 <div>
     <!-- <div>
         <label for="id">id</label>
         <input id="id" ng-model="form.id"/>
     </div>-->
+    <form name="form" ng-submit="save()" novalidate>
     <div>
-        <label for="title">Title</label>
-        <input id="title" ng-model="form.title"/>
+        <label for="title">Título</label>
+        <input id="title" ng-model="book.title" name="title" required>
+        <span ng-show="tituloInvalido">Por favor, introduzca un Título</span>
     </div>
+    <br>
     <div>
-        <label for="author">Author</label>
-        <input id="author" ng-model="form.author"/>
+        <label for="author">Autor</label>
+        <input id="author" ng-model="book.author" name="author" required>
+        <span ng-show="autorInvalido">Por favor, introduzca un Autor</span>
     </div>
+    <br>
     <div>
-        <label for="genre">Genre</label>
-        <input id="genre" ng-model="form.genre"/>
+        <label for="genre">Género</label>
+        <input id="genre" ng-model="book.genre" name="genre" required>
+        <span ng-show="generoInvalido">Por favor, introduzca un Género</span>
     </div>
+    <br>
      <div>
         <label for="year">Year</label>
-        <input id="year" ng-model="form.year"/>
+        <input type="number" id="year" ng-model="book.year" name="year" required>
+          <span ng-show="anioInvalido">Por favor, introduzca un Año</span>
     </div>
-    <button ng-click="save()">Save</button>
+    <br>
+    <div class="button">
+        <button type="submit">Nuevo Libro</button>
+    </div>
+    </form>
+    <!-- <button ng-click="save()">Save</button>-->
 </div>
